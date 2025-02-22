@@ -25,19 +25,19 @@ class CouponServiceImplTest {
     @Autowired
     private CouponRepository couponRepository;
 
-//    @Autowired
-//    private RedisTemplate<String, String> redisTemplate;
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
 
-//
-//    @BeforeEach
-//    public void tearUp() {
-//        redisTemplate.delete("coupon_count");
-//    }
 
-//    @AfterEach
-//    public void tearDown() {
-//       redisTemplate.delete("coupon_count");
-//    }
+    @BeforeEach
+    public void tearUp() {
+        redisTemplate.delete("coupon_count");
+    }
+
+    @AfterEach
+    public void tearDown() {
+       redisTemplate.delete("coupon_count");
+    }
 
     @Test
     public void apply() {

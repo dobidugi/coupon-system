@@ -1,6 +1,7 @@
 package com.coupon.couponsystem.service;
 
 import com.coupon.couponsystem.domain.Coupon;
+import com.coupon.couponsystem.producer.CouponCreateProducer;
 import com.coupon.couponsystem.repository.CouponCountRepository;
 import com.coupon.couponsystem.repository.CouponRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,7 @@ public class CouponServiceImpl implements CouponService {
 
     private final CouponRepository couponRepository;
     private final CouponCountRepository couponCountRepository;
+    private final CouponCreateProducer couponCreateProducer;
 
     @Transactional
     @Override
@@ -23,6 +25,8 @@ public class CouponServiceImpl implements CouponService {
             return;
         }
 
-        couponRepository.save(new Coupon(userId));
+        this.couponCreateProducer.create(userId);
+
+//        couponRepository.save(new Coupon(userId));
     }
 }
